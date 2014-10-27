@@ -1,0 +1,4 @@
+- name: Copy mockwebrvice job
+  copy: src=jenkins/job/mock-webservice.xml dest=.
+- name: Install mockwebservice jenkins job
+  shell: java -jar jenkins-cli.jar -s http://{{ jenkins_host }}:{{jenkins_port}} create-job MockWebservice < mock-webservice.xml

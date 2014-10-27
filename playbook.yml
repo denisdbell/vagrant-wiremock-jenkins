@@ -1,0 +1,31 @@
+---
+- hosts: all
+  sudo: yes
+  vars:
+    docker_image_name: medullan/webservice-mocking
+    jenkins_host: localhost
+    jenkins_port: 8080
+    jenkins_version: 1.586
+  tasks:
+  - name: Install git
+    apt: pkg=git state=latest
+  - name: Add java repositories
+    apt_repository: repo='ppa:webupd8team/java' update_cache=yes
+  - name: Configure oracle license
+    shell: echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections
+  - name: Install java7
+    apt: pkg=oracle-java7-installer update_cache=yes state=installed
+  - name: Download Jenkins
+    shell: wget -q -O - https://jenkins-ci.org/debian/jenkins-ci.org.key | sudo apt-key add -
+  - name: Add package
+    shell: sudo sh -c 'echo deb http://pkg.jenkins-ci.org/debian binary/ > /etc/apt/sources.list.d/jenkins.list'
+  - name: Update cache
+    apt: update_cache=yes
+  - name: Install jenkins
+    apt: name=jenkins={{ jenkins_version }} state=present
+  - name: Download jenkins cli
+    get_url: url=http://{{ jenkins_host }}:{{ jenkins_port }}/jnlpJars/jenkins-cli.jar dest=.
+  - name: Install maven
+    apt: pkg=maven state=latest
+  - include: tasks/docker/docker-install.yml
+  - include: tasks/jenkins/mock-webservice-job-install.yml

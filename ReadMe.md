@@ -21,7 +21,7 @@ How to run
  ```sh
   git clone https://github.com/denisdbell/vagrant-wiremock-jenkins.git
 ``` 
- 2. navigate to the  *** vagrant-wiremock-jenkins *** folder and execute the launch the vagrant box by executing following command:
+ 2. navigate to the  ***vagrant-wiremock-jenkins*** folder and execute the launch the vagrant box by executing following command:
  
   ```sh
   vagrant up

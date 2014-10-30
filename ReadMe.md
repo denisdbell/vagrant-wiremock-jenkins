@@ -19,7 +19,7 @@ How to run
  1. clone the repository using the following command:
     
  ```sh
-  git clone https://github.com/denisdbell/vagrant-wiremock-jenkins.git
+  git clone https://github.com/medullan/vagrant-wiremock-jenkins.git
 ``` 
  2. navigate to the  ***vagrant-wiremock-jenkins*** folder and execute the launch the vagrant box by executing following command:
  

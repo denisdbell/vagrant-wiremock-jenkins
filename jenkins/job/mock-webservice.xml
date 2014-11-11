@@ -13,7 +13,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>git clone https://github.com/denisdbell/webservice-mocking-poc.git</command>
+      <command>git clone https://github.com/medullan/webservice-mocking-poc.git</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command>sudo docker build -t medullan/webservice-mocking .</command>
